@@ -8,7 +8,7 @@ import categoryRoutes from "./routes/categoryRoute.js";
 import productRoutes from "./routes/productRoute.js";
 import cors from "cors";
 import path from "path";
-
+import {fileURLToPath} from 'url';
 // config env file load the configuration variables from the .env file into the process.env object
 dotenv.config();
 
