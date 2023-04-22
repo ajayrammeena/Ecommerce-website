@@ -13,7 +13,16 @@ import {fileURLToPath} from 'url';
 dotenv.config();
 
 //database config
-connectDB();
+// connectDB();
+//PORT
+const PORT = process.env.PORT || 8080;
+//Connect to the database before listening
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -43,13 +52,4 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");
 });
 
-//PORT
-const PORT = process.env.PORT || 8080;
-
-//Connect to the database before listening
-connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-})
 
