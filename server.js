@@ -46,7 +46,10 @@ app.get("/", (req, res) => {
 //PORT
 const PORT = process.env.PORT || 8080;
 
-// run lsiten
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`.bgCyan.blue);
-});
+//Connect to the database before listening
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
+
